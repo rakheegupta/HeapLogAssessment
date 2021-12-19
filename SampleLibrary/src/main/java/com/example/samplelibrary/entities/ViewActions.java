@@ -1,7 +1,6 @@
 package com.example.samplelibrary.entities;
 
 public enum ViewActions {
-
     CLICK,
     DOUBLE_CLICK,
     LONG_CLICK,
