@@ -19,6 +19,12 @@ interface EventDao {
     @Query("select * from event_table")
     List<Event> getAllEvents();
 
+    @Query("select * from event_table LIMIT 5")
+    List<Event> getEventsToUpload();
+
+    @Query("delete from event_table where id in (:list)")
+    int deleteEvents(long[] list);
+
     @Query("select * from event_table where ViewType = :viewType")
     LiveData<List<Event>> getByViewType(ViewTypes viewType);
 

@@ -16,13 +16,11 @@ public class EventRepository {
     ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     private List<Event> events;
-    UploadWorker uploadWorker;
 
     private EventRepository(Context context) {
         eventDatabase = EventDatabase.getDatabase((Application)context);
         eventDao = eventDatabase.eventDao();
-        getAllEvents();
-        uploadWorker = new UploadWorker(context,null);
+        //getAllEvents();
     }
 
     public static EventRepository getInstance(Context context) {
@@ -36,29 +34,17 @@ public class EventRepository {
         return INSTANCE;
     }
 
+    public static EventRepository getInstance(){
+        return INSTANCE;
+    }
+
     public void insert(Event event) {
         executorService.execute(new Runnable() {
            public void run(){
                long result = eventDao.insertEvent(event);
                System.out.println("insert result "+result);
-
-               //print elements in the database
-               List<Event> events = eventDao.getAllEvents();
-               if(events != null)
-                for(Event event : events){
-                   System.out.println(event.toString());
-                }
            }
        });
-
-//        AsyncTask.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                eventDao.insertEvent(event);
-//            };
-//        });
-
-
     }
 
     public void setDatabase(EventDatabase database) {
@@ -87,12 +73,17 @@ public class EventRepository {
                     for(Event event : events){
                         System.out.println(event.toString());
                     }
-                uploadWorker.setEvents(getEvents());
             }
         });
     }
 
+    EventDao getEventDao() {
+        return eventDao;
+    }
+
     List<Event> getEvents() {
+        if(events == null)
+            getAllEvents();
         return events;
     }
 
