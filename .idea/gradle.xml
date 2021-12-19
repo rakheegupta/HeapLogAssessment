@@ -10,7 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/SampleLibrary" />
+            <option value="$PROJECT_DIR$/HeapLogLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
