@@ -10,5 +10,6 @@ public enum ViewActions {
     PRESS_MENU_KEY,
     SWIPE_DOWN,
     SWIPE_UP,
-    ON_TOUCH
+    ON_TOUCH,
+    TEXT_CHANGED
 }

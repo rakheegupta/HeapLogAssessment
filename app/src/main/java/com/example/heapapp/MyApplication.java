@@ -1,4 +1,4 @@
-package com.example.sampleassessment;
+package com.example.heapapp;
 
 import android.app.Application;
 

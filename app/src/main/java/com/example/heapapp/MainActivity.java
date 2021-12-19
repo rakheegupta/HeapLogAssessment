@@ -1,6 +1,8 @@
-package com.example.sampleassessment;
+package com.example.heapapp;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,22 @@ public class MainActivity extends AppCompatActivity {
         etOne.setOnClickListener(this::onTouchEvent);
         imageView.setOnClickListener(this::logClick);
 
+        etOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                HeapLogUtil.log(ViewTypes.EDIT_TEXT, ViewActions.TEXT_CHANGED);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         HeapLogUtil.log(ViewTypes.ACTIVITY,ViewActions.ACTIVITY_CREATED);
     }
 

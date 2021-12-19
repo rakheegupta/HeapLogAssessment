@@ -6,6 +6,6 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "SampleAssessment"
+rootProject.name = "HeapApp"
 include ':app'
 include ':HeapLogLibrary'   
