@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.heaploglibrary.entities.ViewActions;
-import com.example.heaploglibrary.entities.ViewTypes;
+import com.example.heaploglibrary.entities.ViewIdentifiers;
 import com.example.heaploglibrary.api.HeapLogUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                HeapLogUtil.log(ViewTypes.EDIT_TEXT, ViewActions.TEXT_CHANGED);
+                HeapLogUtil.log(ViewIdentifiers.NAME_EDIT_TEXT, ViewActions.TEXT_CHANGED);
             }
 
             @Override
@@ -46,19 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        HeapLogUtil.log(ViewTypes.ACTIVITY,ViewActions.ACTIVITY_CREATED);
+        HeapLogUtil.log(ViewIdentifiers.MAIN_ACTIVITY,ViewActions.ACTIVITY_CREATED);
     }
 
     private void onTouchEvent(View view) {
-        HeapLogUtil.log(ViewTypes.EDIT_TEXT, ViewActions.ON_TOUCH);
+        HeapLogUtil.log(ViewIdentifiers.NAME_EDIT_TEXT, ViewActions.ON_TOUCH);
 
     }
 
     void onClick(View view) {
-        HeapLogUtil.log(ViewTypes.BUTTON, ViewActions.CLICK);
+        HeapLogUtil.log(ViewIdentifiers.LOG_BUTTON, ViewActions.CLICK);
     }
 
     public void logClick(View view) {
-        HeapLogUtil.log(ViewTypes.IMAGE_VIEW,ViewActions.CLICK);
+        HeapLogUtil.log(ViewIdentifiers.IMAGE_VIEW_USER_PROFILE,ViewActions.CLICK);
     }
 }

@@ -5,7 +5,7 @@ import android.app.Application;
 import com.example.heaploglibrary.database.repository.Event;
 import com.example.heaploglibrary.database.repository.EventRepository;
 import com.example.heaploglibrary.entities.ViewActions;
-import com.example.heaploglibrary.entities.ViewTypes;
+import com.example.heaploglibrary.entities.ViewIdentifiers;
 
 public class HeapLogUtil {
 
@@ -15,7 +15,7 @@ public class HeapLogUtil {
         eventRepository = EventRepository.createInstance(application);
     }
 
-    public static void log(ViewTypes type, ViewActions action) {
+    public static void log(ViewIdentifiers type, ViewActions action) {
         eventRepository.logToDatabase(new Event(type,action,System.currentTimeMillis()));
     }
 
