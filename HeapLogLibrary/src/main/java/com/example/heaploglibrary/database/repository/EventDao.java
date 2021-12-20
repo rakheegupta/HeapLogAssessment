@@ -26,8 +26,8 @@ interface EventDao {
     @Query("delete from event_table where id in (:list)")
     int deleteEvents(long[] list);
 
-    @Query("select * from event_table where ViewType = :viewType")
-    LiveData<List<Event>> getByViewType(ViewIdentifiers viewType);
+    @Query("select * from event_table where viewIdentifier = :viewIdentifier")
+    LiveData<List<Event>> getByviewIdentifier(ViewIdentifiers viewIdentifier);
 
     @Query("select * from event_table where ViewAction = :viewAction")
     LiveData<List<Event>> getByViewAction(ViewIdentifiers viewAction);

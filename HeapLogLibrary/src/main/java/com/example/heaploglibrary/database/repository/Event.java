@@ -15,7 +15,7 @@ public class Event {
     Long id;
 
     @ColumnInfo
-    ViewIdentifiers viewType;
+    ViewIdentifiers viewIdentifier;
 
     @ColumnInfo
     ViewActions viewAction;
@@ -28,7 +28,7 @@ public class Event {
     }
 
     public Event(ViewIdentifiers type, ViewActions action, long date) {
-        viewType = type;
+        viewIdentifier = type;
         viewAction = action;
         actionDate = date;
     }
@@ -41,12 +41,12 @@ public class Event {
         this.id = id;
     }
 
-    public ViewIdentifiers getViewType() {
-        return viewType;
+    public ViewIdentifiers getViewIdentifier() {
+        return viewIdentifier;
     }
 
-    public void setViewType(ViewIdentifiers _viewType) {
-        viewType = _viewType;
+    public void setViewIdentifier(ViewIdentifiers viewIdentifier) {
+        this.viewIdentifier = viewIdentifier;
     }
 
     public ViewActions getViewAction() {
@@ -67,6 +67,6 @@ public class Event {
 
     @NonNull
     public String toString() {
-        return id+","+viewType+","+viewAction+","+actionDate ;
+        return id+","+ viewIdentifier +","+viewAction+","+actionDate ;
     }
 }
