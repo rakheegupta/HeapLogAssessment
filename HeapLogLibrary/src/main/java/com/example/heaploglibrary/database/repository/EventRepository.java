@@ -2,6 +2,7 @@ package com.example.heaploglibrary.database.repository;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.work.Constraints;
 import androidx.work.NetworkType;
@@ -64,7 +65,7 @@ public class EventRepository {
         executorService.execute(new Runnable() {
             public void run(){
                 long result = eventDao.insertEvent(event);
-                System.out.println("insert result "+result);
+                Log.d("LogLib","insert result "+result);
             }
         });
     }

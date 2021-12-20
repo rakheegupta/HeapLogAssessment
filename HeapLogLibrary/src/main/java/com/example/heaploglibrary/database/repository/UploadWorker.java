@@ -1,6 +1,7 @@
 package com.example.heaploglibrary.database.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
@@ -42,19 +43,19 @@ public class UploadWorker extends Worker {
 
                     Data data = setupGsonData(events);
 
-                    System.out.println("upload started for "+ Arrays.toString(ids));
+                    Log.d("LogLib","upload started for "+ Arrays.toString(ids));
                     eventService.uploadEvents(data.getString("event"))
                     .enqueue(new Callback<Event>() {
                         @Override
                         public void onResponse(Call<Event> call, retrofit2.Response<Event> response) {
-                            System.out.println("Reached on success");
+                            Log.d("LogLib","Reached on success");
 
                             executorService.execute(new Runnable() {
                                 @Override
                                 public void run() {
-                                    System.out.println("upload successful for "+Arrays.toString(ids));
+                                    Log.d("LogLib","upload successful for "+Arrays.toString(ids));
                                     int result = eventRepository.deleteEvents(ids);
-                                    System.out.println("#deleted- "+result);
+                                    Log.d("LogLib","#deleted- "+result);
                                     // if there is more data in the local cache then upload all of that
                                     doWork();
                                 }
@@ -64,7 +65,7 @@ public class UploadWorker extends Worker {
 
                         @Override
                         public void onFailure(Call<Event> call, Throwable t) {
-                            System.out.println("Upload Failed- "+t.getLocalizedMessage());
+                            Log.d("LogLib","Upload Failed- "+t.getLocalizedMessage());
                         }
                     });
                 }
