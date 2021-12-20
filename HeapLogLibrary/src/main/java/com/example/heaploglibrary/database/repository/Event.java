@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.heaploglibrary.entities.ViewActions;
-import com.example.heaploglibrary.entities.ViewTypes;
+import com.example.heaploglibrary.entities.ViewIdentifiers;
 
 @Entity(tableName = "event_table")
 public class Event {
@@ -15,7 +15,7 @@ public class Event {
     Long id;
 
     @ColumnInfo
-    ViewTypes viewType;
+    ViewIdentifiers viewType;
 
     @ColumnInfo
     ViewActions viewAction;
@@ -27,7 +27,7 @@ public class Event {
 
     }
 
-    public Event(ViewTypes type, ViewActions action, long date) {
+    public Event(ViewIdentifiers type, ViewActions action, long date) {
         viewType = type;
         viewAction = action;
         actionDate = date;
@@ -41,11 +41,11 @@ public class Event {
         this.id = id;
     }
 
-    public ViewTypes getViewType() {
+    public ViewIdentifiers getViewType() {
         return viewType;
     }
 
-    public void setViewType(ViewTypes _viewType) {
+    public void setViewType(ViewIdentifiers _viewType) {
         viewType = _viewType;
     }
 

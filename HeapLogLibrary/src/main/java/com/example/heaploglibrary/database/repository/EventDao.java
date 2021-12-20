@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.heaploglibrary.entities.ViewTypes;
+import com.example.heaploglibrary.entities.ViewIdentifiers;
 
 import java.util.List;
 
@@ -27,10 +27,10 @@ interface EventDao {
     int deleteEvents(long[] list);
 
     @Query("select * from event_table where ViewType = :viewType")
-    LiveData<List<Event>> getByViewType(ViewTypes viewType);
+    LiveData<List<Event>> getByViewType(ViewIdentifiers viewType);
 
     @Query("select * from event_table where ViewAction = :viewAction")
-    LiveData<List<Event>> getByViewAction(ViewTypes viewAction);
+    LiveData<List<Event>> getByViewAction(ViewIdentifiers viewAction);
 
     @Query("select * from event_table where actionDate = :date")
     LiveData<List<Event>> getByDate(Long date);
